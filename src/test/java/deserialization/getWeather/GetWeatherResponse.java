@@ -1,4 +1,4 @@
-package deserialization.get;
+package deserialization.getWeather;
 import java.util.List;
 
 public class GetWeatherResponse {

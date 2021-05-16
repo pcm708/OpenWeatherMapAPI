@@ -1,4 +1,4 @@
-package deserialization.get;
+package deserialization.getWeather;
 
 public class Coord {
 
