@@ -1,5 +1,7 @@
 package crudOperations;
 
+import org.testng.annotations.Test;
+
 import deserialization.getWeather.GetWeatherResponse;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
@@ -7,7 +9,8 @@ import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 
 public class GetWeather {
-	public static void main(String [] args) {
+	@Test
+	public void getResponseCall() {
 		RestAssured.baseURI="http://api.openweathermap.org";
 		RequestSpecification req = RestAssured
 			.given()
@@ -16,8 +19,9 @@ public class GetWeather {
 				.queryParam("appid", "032141f10cb32d52af49c43275a394ca");
 		
 		Response res = req.get("/data/2.5/weather");
+		res.then().log().all();
 		GetWeatherResponse response = res.as(GetWeatherResponse.class);
-		System.out.println("Get Call Response:  \n");
+		System.out.println("\n\n\n###### Get Call Response:  \n");
 		System.out.println("Name: "+response.getName());
 		System.out.println("COD: "+ response.getCod());
 		System.out.println("Wind-Speed: "+response.getWind().getSpeed());
